@@ -36,4 +36,19 @@ jobs:
       with:
         name: apk
         path: app/build/outputs/apk/production/vanillaOpenSource/debug/*.apk  # Adjust the path as necessary
+        
+        
+        
+
+    - name: Collect all APK files
+      run: |
+        mkdir -p all-apks
+        find app/build/outputs/apk -name "*.apk" -exec cp {} all-apks/ \;
+
+    - name: Upload APK artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: all-apks
+        path: all-apks/
+        
           
