@@ -27,7 +27,7 @@ jobs:
         run: ./gradlew assembleProductionVanillaOpenSourceDebug
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: apk
           path: app/build/outputs/apk/production/vanillaOpenSource/debug/*.apk  # Adjust the path as necessary
