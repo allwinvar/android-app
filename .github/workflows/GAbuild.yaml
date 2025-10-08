@@ -36,3 +36,4 @@ jobs:
         with:
           name: apk
           path: app/build/outputs/apk/production/vanillaOpenSource/debug/*.apk  # Adjust the path as necessary
+          
