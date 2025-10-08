@@ -16,24 +16,24 @@ jobs:
       with:
         fetch-depth: 0
 
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'temurin'   # Must be specified
-          java-version: '17'  # Use the required Java version
-          java-package: 'jdk'       # Optional, default is 'jdk'
-          architecture: 'x64'       # Optional
-          check-latest: false       # Optional
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'   # Must be specified
+        java-version: '17'  # Use the required Java version
+        java-package: 'jdk'       # Optional, default is 'jdk'
+        architecture: 'x64'       # Optional
+        check-latest: false       # Optional
   
-      - name: Install Dependencies
-        run: ./gradlew dependencies
+    - name: Install Dependencies
+      run: ./gradlew dependencies
 
-      - name: Build APK
-        run: ./gradlew assembleProductionVanillaOpenSourceDebug
+    - name: Build APK
+      run: ./gradlew assembleProductionVanillaOpenSourceDebug
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: apk
-          path: app/build/outputs/apk/production/vanillaOpenSource/debug/*.apk  # Adjust the path as necessary
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: apk
+        path: app/build/outputs/apk/production/vanillaOpenSource/debug/*.apk  # Adjust the path as necessary
           
