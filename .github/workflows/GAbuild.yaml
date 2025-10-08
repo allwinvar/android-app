@@ -18,7 +18,11 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
+          distribution: 'temurin'   # Must be specified
           java-version: '11'  # Use the required Java version
+          java-package: 'jdk'       # Optional, default is 'jdk'
+          architecture: 'x64'       # Optional
+          check-latest: false       # Optional
   
       - name: Install Dependencies
         run: ./gradlew dependencies
