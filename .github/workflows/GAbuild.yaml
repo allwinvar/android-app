@@ -1,0 +1,33 @@
+name: Build APK
+
+on:
+  push:
+    branches:
+      - GAbuild
+  pull_request:
+    branches:
+      - GAbuild
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Use the required Java version
+  
+      - name: Install Dependencies
+        run: ./gradlew dependencies
+
+      - name: Build APK
+        run: ./gradlew assembleProductionVanillaOpenSourceDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: apk
+          path: app/build/outputs/apk/production/vanillaOpenSource/debug/*.apk  # Adjust the path as necessary
